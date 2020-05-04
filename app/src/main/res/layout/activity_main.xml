@@ -13,8 +13,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
+        android:background="#FF0000"
+        android:backgroundTint="#FF0000"
         android:clickable="true"
         android:focusable="true"
+        android:foregroundTint="#ff0000"
+        app:backgroundTint="#FF0000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
