@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.widget.SimpleCursorAdapter
 import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
