@@ -51,24 +51,7 @@ class addNoteActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        if(item.itemId == R.id.save_note) {
-
-            val noteValues = ContentValues()
-
-            if (noteTitleText.text.toString() == "")
-                noteValues.put("noteTitle", "Untitled Note")
-            else
-                noteValues.put("noteTitle", noteTitleText.text.toString())
-
-            noteValues.put("fullNote", fullNoteText.text.toString())
-
-            if(noteId == 0)
-                addNote(noteValues)
-            else
-                updateNote(noteValues)
-
-        }
-        else if(item.itemId == R.id.delete_note) {
+        if(item.itemId == R.id.delete_note) {
 
             db?.delete("myNotes", "_id=?", arrayOf(noteId.toString()))
             Toast.makeText(this, "Note deleted successfully!", Toast.LENGTH_LONG).show()
@@ -107,5 +90,26 @@ class addNoteActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.note_details_menu, menu)
 
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onBackPressed() {
+
+        val noteValues = ContentValues()
+
+        if (noteTitleText.text.toString() == "")
+            noteValues.put("noteTitle", "Untitled Note")
+        else
+            noteValues.put("noteTitle", noteTitleText.text.toString())
+
+        noteValues.put("fullNote", fullNoteText.text.toString())
+
+        if(noteId == 0)
+            addNote(noteValues)
+        else
+            updateNote(noteValues)
+
+        super.onBackPressed()
+        finish()
+
     }
 }
