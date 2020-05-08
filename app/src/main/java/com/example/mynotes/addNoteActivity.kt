@@ -2,14 +2,16 @@ package com.example.mynotes
 
 
 import android.content.ContentValues
+import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_add_note.*
+
 
 class addNoteActivity : AppCompatActivity() {
 
@@ -58,6 +60,8 @@ class addNoteActivity : AppCompatActivity() {
             finish()
 
         }
+        val myIntent = Intent(this, MainActivity::class.java)
+        startActivityForResult(myIntent, 0)
         return super.onOptionsItemSelected(item)
 
 
