@@ -60,8 +60,7 @@ class addNoteActivity : AppCompatActivity() {
             finish()
 
         }
-        val myIntent = Intent(this, MainActivity::class.java)
-        startActivityForResult(myIntent, 0)
+        onBackPressed()
         return super.onOptionsItemSelected(item)
 
 
