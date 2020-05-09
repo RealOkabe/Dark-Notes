@@ -3,4 +3,6 @@
     <string name="full_note">Full Note</string>
     <string name="note_title">Note Title</string>
     <string name="deletenote">deletenote</string>
+    <string name="change_color_scheme">Change Color Scheme</string>
+    <string name="donate">Donate</string>
 </resources>

@@ -3,4 +3,8 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#ff0000</color>
+    <color name="cyanea_primary_reference">#000000</color>
+    <color name="cyanea_accent_reference">#FF0000</color>
+    <color name="cyanea_background_dark">#000000</color>
+    <color name="cyanea_background">#000000</color>
 </resources>

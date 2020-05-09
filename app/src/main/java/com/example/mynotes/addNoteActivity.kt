@@ -2,18 +2,17 @@ package com.example.mynotes
 
 
 import android.content.ContentValues
-import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity
 import kotlinx.android.synthetic.main.activity_add_note.*
 
 
-class addNoteActivity : AppCompatActivity() {
+class addNoteActivity : CyaneaAppCompatActivity() {
 
     private var db:SQLiteDatabase? = null
     private var noteId:Int? = null
@@ -24,6 +23,8 @@ class addNoteActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_note)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val dbhelper = myNotesSQLiteOpenHelper(this)
         db = dbhelper.writableDatabase
@@ -88,7 +89,7 @@ class addNoteActivity : AppCompatActivity() {
         db?.close()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
         menuInflater.inflate(R.menu.note_details_menu, menu)
 
