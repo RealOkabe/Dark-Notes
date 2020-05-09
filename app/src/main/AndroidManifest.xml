@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme"
         android:name=".MyApplication">
         <activity android:name=".addNoteActivity"
-            android:theme="@style/Theme.Cyanea.Dark.reference">
+            android:theme="@style/Theme.Cyanea.Dark">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -21,7 +21,7 @@
 
         </activity>
         <activity android:name=".MainActivity"
-            android:theme="@style/Theme.Cyanea.Dark.reference">
+            android:theme="@style/Theme.Cyanea.Dark">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

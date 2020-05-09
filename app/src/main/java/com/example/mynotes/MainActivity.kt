@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SimpleCursorAdapter
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.jaredrummler.cyanea.app.CyaneaAppCompatActivity
 import com.jaredrummler.cyanea.prefs.CyaneaSettingsActivity
@@ -58,11 +57,10 @@ class MainActivity : CyaneaAppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         if (item.itemId == R.id.donate) {
-            val browserIntent =
-                Intent(Intent.ACTION_VIEW, Uri.parse("https://paypal.me/AnmolAgrawal"))
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://paypal.me/AnmolAgrawal"))
             startActivity(browserIntent)
-            Toast.makeText(this, "Thanks for donating!", Toast.LENGTH_LONG).show()
-        } else {
+        }
+        else {
 
             val inten = Intent(this, CyaneaSettingsActivity::class.java)
             startActivity(inten)

@@ -52,16 +52,24 @@ class addNoteActivity : CyaneaAppCompatActivity() {
 
     }
 
+    fun deleteNote(noteId:Int) {
+
+        db?.delete("myNotes", "_id=?", arrayOf(noteId.toString()))
+        Toast.makeText(this, "Note deleted successfully!", Toast.LENGTH_LONG).show()
+        finish()
+
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         if(item.itemId == R.id.delete_note) {
 
-            db?.delete("myNotes", "_id=?", arrayOf(noteId.toString()))
-            Toast.makeText(this, "Note deleted successfully!", Toast.LENGTH_LONG).show()
-            finish()
+            deleteNote(noteId!!)
+
 
         }
-        onBackPressed()
+        else
+            onBackPressed()
         return super.onOptionsItemSelected(item)
 
 
@@ -79,8 +87,15 @@ class addNoteActivity : CyaneaAppCompatActivity() {
     }
 
     private fun updateNote(noteValues: ContentValues) {
-        db?.update("myNotes", noteValues, "_id=?", arrayOf(noteId.toString()))
-        Toast.makeText(this, "Note updated successfully!", Toast.LENGTH_LONG).show()
+
+        if (cursor?.getString(0) == noteTitleText.text.toString() &&
+            cursor?.getString(1) == fullNoteText.text.toString())
+            finish()
+        else {
+
+            db?.update("myNotes", noteValues, "_id=?", arrayOf(noteId.toString()))
+            Toast.makeText(this, "Note updated successfully!", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onDestroy() {
@@ -100,20 +115,24 @@ class addNoteActivity : CyaneaAppCompatActivity() {
 
         val noteValues = ContentValues()
 
-        if (noteTitleText.text.toString() == "")
-            noteValues.put("noteTitle", "Untitled Note")
-        else
-            noteValues.put("noteTitle", noteTitleText.text.toString())
+        if (fullNoteText.text.toString() == "" && noteTitleText.text.toString() == "")
+            deleteNote(noteId!!)
+        else {
 
-        noteValues.put("fullNote", fullNoteText.text.toString())
+            if (noteTitleText.text.toString() == "" && fullNoteText.text.toString() != "")
+                noteValues.put("noteTitle", "Untitled Note")
+            else
+                noteValues.put("noteTitle", noteTitleText.text.toString())
 
-        if(noteId == 0)
-            addNote(noteValues)
-        else
-            updateNote(noteValues)
+            noteValues.put("fullNote", fullNoteText.text.toString())
 
-        super.onBackPressed()
-        finish()
+            if (noteId == 0)
+                addNote(noteValues)
+            else
+                updateNote(noteValues)
 
+            super.onBackPressed()
+            finish()
+        }
     }
 }

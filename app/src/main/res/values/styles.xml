@@ -9,6 +9,5 @@
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:itemBackground">#000000</item>
     </style>
-    <style name="Theme.Cyanea.Dark.reference"></style>
 
 </resources>
